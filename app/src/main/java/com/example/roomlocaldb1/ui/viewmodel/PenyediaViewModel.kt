@@ -7,7 +7,7 @@ import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel
 
 object PenyediaViewModel {
 
-    val factory = viewModelFactory {
+    val Factory = viewModelFactory {
         initializer {
             MahasiswaViewModel(
                 krsApp().containerApp.repositoryMhs
