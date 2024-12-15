@@ -31,13 +31,13 @@ class DetailMhsViewModel (
             )
         }
         .onStart {
-            emit(DetailUiState(isLoding = true))
+            emit(DetailUiState(isLoading = true))
             delay(600)
         }
         .catch {
             emit(
                 DetailUiState(
-                    isLoding = false,
+                    isLoading = false,
                     isError = true,
                     errorMessage = it.message ?: "Terjadi kesalahan",
                     ))
@@ -74,8 +74,7 @@ data class DetailUiState(
 
 // Data class untuk menampung data yang akan ditampilkan di UI
 // Memindahkan data dari entity ke ui
-fun Mahasiswa.toDetailUiEvent() = MahasiswaEvent{
-    return MahasiswaEvent(): MahasiswaEvent {
+fun Mahasiswa.toDetailUiEvent() : MahasiswaEvent {
         return MahasiswaEvent (
             nim = nim,
             nama = nama,
@@ -84,5 +83,4 @@ fun Mahasiswa.toDetailUiEvent() = MahasiswaEvent{
             kelas = kelas,
             angkatan = angkatan
         )
-}
 }
