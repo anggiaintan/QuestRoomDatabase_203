@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.roomlocaldb1.data.entity.Mahasiswa
 import com.example.roomlocaldb1.repository.RepositoryMhs
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
@@ -67,5 +68,11 @@ class UpdateMhsViewModel (
             updateUiState = updateUiState.copy(snackBarMessage = "Data gagal diupdate")
         }
     }
-
+    fun resetSnackBarMessage() {
+        updateUiState = updateUiState.copy(snackBarMessage = null)
+    }
 }
+
+fun Mahasiswa.toUIStateMhs(): MhsUIState = MhsUIState (
+    mahasiswaEvent = this.toDetailUiEvent(),
+)
