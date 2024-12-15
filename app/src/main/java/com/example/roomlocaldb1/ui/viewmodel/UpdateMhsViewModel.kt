@@ -44,4 +44,28 @@ class UpdateMhsViewModel (
         updateUiState = updateUiState.copy(isEntryValid = errorState)
         return errorState.isValid()
     }
+
+    fun updateData() {
+        val currentEvent = updateUiState.mahasiswaEvent
+        if (validateFields()) {
+            viewModelScope.launch {
+                try {
+                    repositoryMhs.updateMhs(currentEvent.toMahasiswaEntity())
+                    updateUiState = updateUiState.copy(
+                        snackBarMessage = "Data berhasil diupdate",
+                        mahasiswaEvent = MahasiswaEvent(),
+                        isEntryValid = FormErrorState()
+                    )
+                    println("snackBarMesssage diatur: ${updateUiState.snackBarMessage}")
+                } catch (e: Exception) {
+                    updateUiState = updateUiState.copy(
+                        snackBarMessage = "Data gagal diupdate"
+                    )
+                }
+            }
+        } else {
+            updateUiState = updateUiState.copy(snackBarMessage = "Data gagal diupdate")
+        }
+    }
+
 }
