@@ -3,6 +3,7 @@ package com.example.roomlocaldb1.ui.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.roomlocaldb1.data.entity.Mahasiswa
 import com.example.roomlocaldb1.repository.RepositoryMhs
 import com.example.roomlocaldb1.ui.navigation.DestinasiDetail
 import kotlinx.coroutines.delay
@@ -69,4 +70,19 @@ data class DetailUiState(
 
     val isUiEventEmpty: Boolean
         get() = detailUiEvent != MahasiswaEvent()
+}
+
+// Data class untuk menampung data yang akan ditampilkan di UI
+// Memindahkan data dari entity ke ui
+fun Mahasiswa.toDetailUiEvent() = MahasiswaEvent{
+    return MahasiswaEvent(): MahasiswaEvent {
+        return MahasiswaEvent (
+            nim = nim,
+            nama = nama,
+            jenisKelamin = jenisKelamin,
+            alamat = alamat,
+            kelas = kelas,
+            angkatan = angkatan
+        )
+}
 }
