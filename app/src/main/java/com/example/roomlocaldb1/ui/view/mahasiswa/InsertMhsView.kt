@@ -24,16 +24,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.FormErrorState
-import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.MahasiswaEvent
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomlocaldb1.ui.costumwidget.CustomTopAppBar
 import com.example.roomlocaldb1.ui.navigation.AlamatNavigasi
-import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel
-import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.MhsUiState
 
 import kotlinx.coroutines.launch
 

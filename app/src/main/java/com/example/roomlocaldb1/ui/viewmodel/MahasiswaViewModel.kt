@@ -64,44 +64,44 @@ class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel(
     }
 
 
-// untuk membungkus formerrorstate, mahasiswaevent, snackbarmessage dalam suatu data class
-data class MhsUiState(
-    val mahasiswaEvent: MahasiswaEvent = MahasiswaEvent(),
-    val isEntryValid: FormErrorState = FormErrorState(),
-    val snackBarMessage: String? = null,
-)
+    // untuk membungkus formerrorstate, mahasiswaevent, snackbarmessage dalam suatu data class
+    data class MhsUiState(
+        val mahasiswaEvent: MahasiswaEvent = MahasiswaEvent(),
+        val isEntryValid: FormErrorState = FormErrorState(),
+        val snackBarMessage: String? = null,
+    )
 
-// memberikan sebuah validasi apakah textfield sudah sesuai atau belum
-data class FormErrorState(
-    val nim: String? = null,
-    val nama: String? = null,
-    val jenisKelamin: String? = null,
-    val alamat: String? = null,
-    val kelas: String? = null,
-    val angkatan: String? = null
-) {
-    fun isValid(): Boolean {
-        return nim == null && nama == null && jenisKelamin == null &&
-                alamat == null && kelas == null && angkatan == null
+    // memberikan sebuah validasi apakah textfield sudah sesuai atau belum
+    data class FormErrorState(
+        val nim: String? = null,
+        val nama: String? = null,
+        val jenisKelamin: String? = null,
+        val alamat: String? = null,
+        val kelas: String? = null,
+        val angkatan: String? = null
+    ) {
+        fun isValid(): Boolean {
+            return nim == null && nama == null && jenisKelamin == null &&
+                    alamat == null && kelas == null && angkatan == null
+        }
     }
-}
 
-//data class variabel yang menyimpan data input form
-data class MahasiswaEvent( // menyimpan data dari sebuah textfield
-    val nim: String = "",
-    val nama: String = "",
-    val jenisKelamin: String = "",
-    val alamat: String = "",
-    val kelas: String = "",
-    val angkatan: String = ""
-)
+    //data class variabel yang menyimpan data input form
+    data class MahasiswaEvent( // menyimpan data dari sebuah textfield
+        val nim: String = "",
+        val nama: String = "",
+        val jenisKelamin: String = "",
+        val alamat: String = "",
+        val kelas: String = "",
+        val angkatan: String = ""
+    )
 
-//menyimpan input form ke dalam entity
-fun MahasiswaEvent.toMahasiswaEntity(): Mahasiswa = Mahasiswa(
-    nim = nim, //yang kiri adalah entitas yang kanan adalah variabel yang ada di MahasiswaEvent
-    nama = nama,
-    jenisKelamin = jenisKelamin,
-    alamat = alamat,
-    kelas = kelas,
-    angkatan = angkatan
-)}
+    //menyimpan input form ke dalam entity
+    fun MahasiswaEvent.toMahasiswaEntity(): Mahasiswa = Mahasiswa(
+        nim = nim, //yang kiri adalah entitas yang kanan adalah variabel yang ada di MahasiswaEvent
+        nama = nama,
+        jenisKelamin = jenisKelamin,
+        alamat = alamat,
+        kelas = kelas,
+        angkatan = angkatan
+    )}

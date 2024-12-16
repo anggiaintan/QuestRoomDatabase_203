@@ -27,7 +27,7 @@ class DetailMhsViewModel (
         .map {
             DetailUiState(
                 detailUiEvent = it.toDetailUiEvent(),
-                isLoding = false,
+                isLoading = false,
             )
         }
         .onStart {

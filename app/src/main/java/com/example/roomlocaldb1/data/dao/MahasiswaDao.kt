@@ -13,7 +13,7 @@ interface MahasiswaDao {
     @Insert
     suspend fun insertMahasiswa(mahasiswa: Mahasiswa) //menggunakan suspend karena operasinya berat (insert, update, delete)
 
-    //getALllMahasiswa
+    //getAllMahasiswa
     @Query("SELECT * FROM mahasiswa ORDER BY nama ASC")
     fun getAllMahasiswa() : Flow<List<Mahasiswa>>
 
