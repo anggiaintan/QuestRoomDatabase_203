@@ -1,5 +1,5 @@
 Halaman home:
-![Screenshot (1105)](https://github.com/user-attachments/assets/6f20f135-482b-44c7-8ac7-1f6b8a969b0a)
+![Screenshot (1106)](https://github.com/user-attachments/assets/24d87ed2-e599-4715-ac4e-773469689689)
 Halaman tambah:
 ![Screenshot (1095)](https://github.com/user-attachments/assets/bd56c4c0-ba51-4b62-8c42-12f32c606a12)
 Data berhasil ditambah:
