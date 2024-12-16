@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -36,14 +37,15 @@ import com.example.roomlocaldb1.data.entity.Mahasiswa
 import com.example.roomlocaldb1.ui.costumwidget.CustomTopAppBar
 import com.example.roomlocaldb1.ui.viewmodel.DetailMhsViewModel
 import com.example.roomlocaldb1.ui.viewmodel.DetailUiState
+import com.example.roomlocaldb1.ui.viewmodel.toMahasiswaEntity
 
 @Composable
 fun DetailMhsView(
     modifier: Modifier = Modifier,
     viewModel: DetailMhsViewModel = viewModel(factory = PenyediaViewModel.Factory),
     onBack: () -> Unit = { },
-    onEditClick: () -> Unit = { },
-    onDeleteClick: () -> Unit = { }
+    onDeleteClick: () -> Unit = { },
+    onEditClick: (String) -> Unit = { }
 ) {
     Scaffold (
         topBar = {
@@ -97,7 +99,7 @@ fun BodyDetailMhs(
                 CircularProgressIndicator() // Tampilkan loading
             }
             }
-        detailUiState.isUiNotEmpty -> {
+        detailUiState.isUiEventNotEmpty -> {
             Column (
                 modifier = modifier
                     .fillMaxWidth()
@@ -105,6 +107,7 @@ fun BodyDetailMhs(
             ) {
                 ItemDetailMhs(
                     mahasiswa = detailUiState.detailUiEvent.toMahasiswaEntity(),
+                    modifier = Modifier
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
                 Button(
@@ -125,7 +128,7 @@ fun BodyDetailMhs(
                 }
             }
         }
-        detailUiState.isUiEventEmpty -> {
+        detailUiState.isUiEventNotEmpty -> {
             Box(
                 modifier = modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center
@@ -186,7 +189,7 @@ fun ComponentDetailMhs(
             color = Color.Gray
         )
         Text(
-            text = isinya, fontSize = 20.sp, fontWeight = FontWeight.Bold,
+            text = isinya, fontSize = 20.sp, fontWeight = FontWeight.Bold
         )
     }
 }
@@ -197,6 +200,7 @@ private fun DeleteConfirmationDialog (
     AlertDialog(onDismissRequest = { /* Do nothing */ },
         title = {Text("Delete Data")},
         text = {Text("Apakah anda yakin ingin menghapus data?")},
+        modifier = modifier,
         dismissButton = {
             TextButton(onClick = onDeleteCancel) {
                 Text(text = "Cancel")

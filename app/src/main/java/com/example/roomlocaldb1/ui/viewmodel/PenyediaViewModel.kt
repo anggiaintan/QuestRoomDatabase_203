@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.initializer
 import com.example.roomlocaldb1.KrsApp
 import com.example.roomlocaldb1.ui.viewmodel.DetailMhsViewModel
 import com.example.roomlocaldb1.ui.viewmodel.HomeMhsViewModel
+import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel
 import com.example.roomlocaldb1.ui.viewmodel.UpdateMhsViewModel
 
 object PenyediaViewModel {

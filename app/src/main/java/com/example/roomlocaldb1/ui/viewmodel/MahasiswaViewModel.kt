@@ -10,7 +10,7 @@ import com.example.roomlocaldb1.repository.RepositoryMhs
 import kotlinx.coroutines.launch
 
 class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel() {
-    var uiState by mutableStateOf(MhsUiState())
+    var uiState by mutableStateOf(MhsUIState())
 
     //Memperbarui state berdasarkan input pengguna
     fun updateState(mahasiswaEvent: MahasiswaEvent) { //event: suatu kejadian/aksi, state: hasil dari aksi/perubahan
@@ -23,12 +23,12 @@ class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel(
     private fun validateFields(): Boolean { //artinya boolean true or false
         val event = uiState.mahasiswaEvent
         val errorState = FormErrorState(
-            nim = if (event.nim.isNotEmpty()) null else "Nim tidak boleh kosong",
+            nim = if (event.nim.isNotEmpty()) null else "NIM tidak boleh kosong",
             nama = if (event.nama.isNotEmpty()) null else "Nama tidak boleh kosong",
             jenisKelamin = if (event.jenisKelamin.isNotEmpty()) null else "Jenis Kelamin tidak boleh kosong",
             alamat = if (event.alamat.isNotEmpty()) null else "Alamat tidak boleh kosong",
             kelas = if (event.kelas.isNotEmpty()) null else "Kelas tidak boleh kosong",
-            angkatan = if (event.angkatan.isNotEmpty()) null else "Angkatan tidak boleh kosong",
+            angkatan = if (event.angkatan.isNotEmpty()) null else "Angkatan tidak boleh kosong"
         )
         uiState = uiState.copy(isEntryValid = errorState)
         return errorState.isValid()
@@ -53,7 +53,8 @@ class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel(
                 }
             }
         } else {
-            uiState = uiState.copy(snackBarMessage = "Input tidak valid. Periksa kembali data Anda.")
+            uiState =
+                uiState.copy(snackBarMessage = "Input tidak valid. Periksa kembali data Anda.")
         }
 
     }
@@ -63,9 +64,8 @@ class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel(
         uiState = uiState.copy(snackBarMessage = null)
     }
 
-
     // untuk membungkus formerrorstate, mahasiswaevent, snackbarmessage dalam suatu data class
-    data class MhsUiState(
+    data class MhsUIState(
         val mahasiswaEvent: MahasiswaEvent = MahasiswaEvent(),
         val isEntryValid: FormErrorState = FormErrorState(),
         val snackBarMessage: String? = null,
@@ -104,4 +104,5 @@ class MahasiswaViewModel (private val repositoryMhs: RepositoryMhs) : ViewModel(
         alamat = alamat,
         kelas = kelas,
         angkatan = angkatan
-    )}
+    )
+}

@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.roomlocaldb1.ui.view.mahasiswa.DestinasiInsert
 import com.example.roomlocaldb1.ui.view.mahasiswa.DetailMhsView
+import com.example.roomlocaldb1.ui.view.mahasiswa.HomeMhsView
 import com.example.roomlocaldb1.ui.view.mahasiswa.InsertMhsView
 import com.example.roomlocaldb1.ui.view.mahasiswa.UpdateMhsView
 
@@ -51,7 +52,7 @@ fun PengelolaHalaman(
         }
 
         composable(
-            route = DestinasiDetail.routeWithArg,
+            DestinasiDetail.routesWithArg,
             arguments = listOf(
                 navArgument(DestinasiDetail.NIM) {
                     type = NavType.StringType
@@ -59,13 +60,13 @@ fun PengelolaHalaman(
             )
         ) {
             val nim = it.arguments?.getString(DestinasiDetail.NIM)
-            nim?.let {nim ->
+            nim.let {nim ->
                 DetailMhsView(
                     onBack = {
                         navController.popBackStack()
                     },
                     onEditClick = {
-                        navController.navigate("${DestinasiEdit.route}/$it")
+                        navController.navigate("${DestinasiUpdate.route}/$it")
                     },
                     modifier = modifier,
                     onDeleteClick = {
@@ -76,9 +77,9 @@ fun PengelolaHalaman(
                     }
             }
         composable(
-            DestinasiEdit.routeWithArg,
+            DestinasiUpdate.routesWithArg,
             arguments = listOf(
-                navArgument(DestinasiEdit.NIM) {
+                navArgument(DestinasiUpdate.NIM) {
                     type = NavType.StringType
                 }
             )
@@ -90,7 +91,7 @@ fun PengelolaHalaman(
                 onNavigate = {
                     navController.popBackStack()
                 },
-                modifier = modifier,
+                modifier = modifier
             )
         }
     }

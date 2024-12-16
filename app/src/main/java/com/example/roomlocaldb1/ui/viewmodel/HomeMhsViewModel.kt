@@ -3,6 +3,7 @@ package com.example.roomlocaldb1.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.roomlocaldb1.data.entity.Mahasiswa
+import com.example.roomlocaldb1.repository.LocalRepositoryMhs
 import com.example.roomlocaldb1.repository.RepositoryMhs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted

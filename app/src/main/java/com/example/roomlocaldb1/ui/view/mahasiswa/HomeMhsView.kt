@@ -44,7 +44,7 @@ import com.example.roomlocaldb1.ui.viewmodel.HomeUiState
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeMhsViewModel (
+fun HomeMhsView (
     viewModel: HomeMhsViewModel = viewModel (factory = PenyediaViewModel.Factory),
     onAddMhs: () -> Unit = { },
     onDetailClick: (String) -> Unit = { },
@@ -111,6 +111,33 @@ fun BodyHomeMhsView(
                     }
                 }
             }
+        }
+        homeUiState.listMhs.isEmpty() ->{
+            //Menampilkan pesan jika data kosong
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ){
+                Text(
+                    text = "Tidak ada data mahasiswa.",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+        else -> {
+            //Menampilkan daftar mahasiswa
+            ListMahasiswa(
+                listMhs = homeUiState.listMhs,
+                onClick = {
+                    onClick(it)
+                    println(
+                        it
+                    )
+                },
+                modifier = modifier
+            )
         }
     }
 }

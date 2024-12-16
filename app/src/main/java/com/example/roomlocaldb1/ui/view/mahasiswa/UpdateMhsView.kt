@@ -34,9 +34,9 @@ fun UpdateMhsView(
     val coroutineScope = rememberCoroutineScope()
 
     // Observasi perubahan snackarMessage
-    LaunchedEffect(uiState.snackbarMessage) {
+    LaunchedEffect(uiState.snackBarMessage) {
         println("LaunchedEffect triggered")
-        uiState.snackbarMessage?.let { message ->
+        uiState.snackBarMessage?.let { message ->
             println("Snackbar message received: $message")
             coroutineScope.launch {
                 println("Launching coroutine for snackbar")
@@ -55,7 +55,7 @@ fun UpdateMhsView(
             CustomTopAppBar(
                 judul = "Edit Mahasiswa",
                 showBackButton = true,
-                onBack = onBack,
+                onBack = onBack
             )
         }
     ) { padding ->
@@ -68,8 +68,8 @@ fun UpdateMhsView(
             // Isi Body
             InsertBodyMhs(
                 uiState = uiState,
-                onValueChange = {updatedEvent ->
-                    viewModel.updateState(updatedEvent)
+                onValueChange = {updateEvent ->
+                    viewModel.updateState(updateEvent)
                 },
                 onClick = {
                     coroutineScope.launch {

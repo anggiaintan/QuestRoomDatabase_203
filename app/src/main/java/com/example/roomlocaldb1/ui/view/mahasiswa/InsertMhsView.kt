@@ -30,7 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomlocaldb1.ui.costumwidget.CustomTopAppBar
 import com.example.roomlocaldb1.ui.navigation.AlamatNavigasi
-
+import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.FormErrorState
+import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.MahasiswaEvent
+import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel
+import com.example.roomlocaldb1.ui.viewmodel.MahasiswaViewModel.MhsUIState
 import kotlinx.coroutines.launch
 
 
@@ -96,7 +99,7 @@ fun InsertMhsView(
 fun InsertBodyMhs(
     modifier: Modifier = Modifier,
     onValueChange: (MahasiswaEvent) -> Unit,
-    uiState: MhsUiState,
+    uiState: MhsUIState,
     onClick: () -> Unit
 ) {
     Column(
@@ -131,7 +134,7 @@ fun FormMahasiswa(
     val kelas = listOf("A", "B", "C", "D", "E")
 
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         // Nama
         OutlinedTextField(
